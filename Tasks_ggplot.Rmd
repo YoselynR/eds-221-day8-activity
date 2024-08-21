@@ -1,0 +1,40 @@
+---
+title: "Tasks_ggplot"
+author: "Yos"
+date: "2024-08-21"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+library(here)
+library(janitor)
+library(patchwork)
+library(ggrepel)
+library(gghighlight)
+library(paletteer)
+library(ggExtra)
+library(ggbeeswarm)
+```
+
+
+```{r}
+space_launches<-read_csv(here("data","space_launches.csv"))
+```
+
+```{r}
+ggplot(space_launches,aes(x=launch_year,y=agency))+
+  geom_point(aes(color=agency_type,
+                 size=category),
+             alpha=0.5)+
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major = element_line(color = "orange"),
+        plot.background = element_rect(fill = "black"),
+        text=element_text(size = 12,family = "serif"),
+        axis.text.x = element_text(color = "green"),
+        axis.text.y = element_text(color = "yellow"),
+        panel.background = element_rect(color = "purple",fill = "pink"))
+```
+
